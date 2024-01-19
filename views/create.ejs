@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add employees</title>
+</head>
+<body>
+    <div>
+       <% if(update){%>
+        <h2>Update Employee</h2>
+        <div>
+            <form action="/updateuser" method="post">
+              <input type="hidden" name="id" value="<%= user.id  %>" id="">
+              <label for="name">Name:</label>
+              <input type="text" name="name" id="" value="<%= user.name  %>" required>
+              <label for="address">Address:</label>
+              <input type="text" name="address" value="<%= user.address  %>" id="" required>
+              <label for="contact">Contact:</label>
+              <input type="tel" name="contact" maxlength="10" id="" value="<%= user.contact  %>" required>
+              <label for="email">Email:</label>
+              <input type="email" name="email" id="" value="<%= user.email  %>" required>
+                <button>Submit</button>
+            </form>
+        </div>
+            
+      <% }else{ %>
+        <h2>Create Employee</h2>
+        <div>
+            <form action="/createuser" method="post">
+              <input type="hidden" name="id" id="">
+              <label for="name">Name:</label>
+              <input type="text" name="name" id=""  required>
+              <label for="address">Address:</label>
+              <input type="text" name="address"  id="" required>
+              <label for="contact">Contact:</label>
+              <input type="tel" name="contact" maxlength="10" id="" required>
+              <label for="email">Email:</label>
+              <input type="email" name="email" id=""  required>
+                <button>Submit</button>
+            </form>
+        </div>
+      <%}  %>
+    </div>
+</body>
+</html>
