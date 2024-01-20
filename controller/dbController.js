@@ -25,6 +25,10 @@ const getUserById=(id)=>{
     return db.execute(`select * from employees where id=?`,[id])
 }
 
+//search user
+const filterUserFromDb=(user)=>{
+    return db.execute(`select * from employees where name like ?`,[`%${user}%`])
+}
 
 
 module.exports={
@@ -32,5 +36,6 @@ module.exports={
     insertIntoDb,
     updateUserIntoDb,
     deleteUserFromDb,
-    getUserById
+    getUserById,
+    filterUserFromDb
 }

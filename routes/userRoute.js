@@ -1,4 +1,4 @@
-const { post_User, get_Dashboard, update_User, delete_User, get_Update_User, get_Create } = require("../controller/userController");
+const { post_User, get_Dashboard, update_User, delete_User, get_Update_User, get_Create, filter_User } = require("../controller/userController");
 
 const router=require("express").Router();
 
@@ -16,6 +16,9 @@ router.post("/updateuser",update_User)
 
 //delete
 router.post("/delete",delete_User)
+
+//filter user
+router.post("/searchuser",filter_User)
 
 
 module.exports=router

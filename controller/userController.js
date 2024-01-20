@@ -1,4 +1,4 @@
-const { getAllUsers, insertIntoDb, getUserById, updateUserIntoDb, deleteUserFromDb } = require("./dbController");
+const { getAllUsers, insertIntoDb, getUserById, updateUserIntoDb, deleteUserFromDb, filterUserFromDb } = require("./dbController");
 
 
 //get dashboard/home page
@@ -6,7 +6,8 @@ const get_Dashboard=async(req,res)=>{
     try {
         const users=await getAllUsers();
         const viewsData={
-            users:users[0]
+            users:users[0],
+            filter:false
         }
         res.status(200).render("home",viewsData)
     } catch (error) {
@@ -84,7 +85,21 @@ const delete_User=async(req,res)=>{9
     }
 }
 
+//filter user 
+const filter_User=async(req,res)=>{
+    const {searchData}=req.body
+    try {
+    const user=await filterUserFromDb(searchData)
+    const viewsData={
+        users:user[0],
+        filter:true
+    }
+    res.render("home",viewsData)
+    } catch (error) {
+     console.log(error);
+    }
+}
 
 module.exports={
-    get_Create,get_Dashboard,post_User,update_User,delete_User,get_Update_User
+    get_Create,get_Dashboard,post_User,update_User,delete_User,get_Update_User,filter_User
 }

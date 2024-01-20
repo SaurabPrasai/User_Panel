@@ -31,8 +31,18 @@
         </style>
 </head>
 <body>
-   <h1>User Panel</h1>
+   <h1>Employee Panel</h1>
+   <button><a href="/create">Add Employee</a></button>
    <div>
+    <div>
+        <form action="/searchuser" method="post">
+            <input type="search" name="searchData" placeholder="search" required>
+            <button>Search</button>
+            <% if(filter){%>
+                 <button><a href="/">Show all users</a></button>
+          <%  } %>
+        </form>
+    </div>
       <table>
             <tr>
                 <th>SN</th>
